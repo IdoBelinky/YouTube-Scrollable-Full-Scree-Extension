@@ -26,6 +26,19 @@ chrome.storage.sync.get(["fakeFullscreenEnabled"], (data) => {
   }
 });
 
+
+function scrollToTopYouTube() {
+  // Find the real scroll container when in fake fullscreen
+  const wrapper = document.getElementById("pageFullscreenWrapper");
+  const ytdApp = document.querySelector("ytd-app");
+  const scrollContainer = wrapper || ytdApp || document.scrollingElement;
+
+  if (!scrollContainer) return;
+
+  scrollContainer.scrollTop = 0;
+  console.log("Scrolled to top of:", scrollContainer.id || scrollContainer.tagName);
+}
+
 /* === Helpers to enter/exit fake fullscreen === */
 function enterFakeFullscreen() {
   if (!extensionEnabled || isFakeFullscreen) return;
@@ -46,12 +59,14 @@ function enterFakeFullscreen() {
   player.style.margin = "0";
   player.style.padding = "0";
 
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  scrollToTopYouTube();
   console.log("Entered fake fullscreen");
 }
 
 function exitFakeFullscreen() {
   if (!extensionEnabled || !isFakeFullscreen) return;
+
+  scrollToTopYouTube();
 
   const body = document.body;
   const player = document.querySelector("#movie_player");
@@ -68,6 +83,7 @@ function exitFakeFullscreen() {
   body.style.padding = "";
   player.style.margin = "";
   player.style.padding = "";
+
 
   console.log("Exited fake fullscreen");
 }
