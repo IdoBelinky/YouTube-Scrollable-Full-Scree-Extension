@@ -1,0 +1,66 @@
+/* Fullscreen wrapper */
+#pageFullscreenWrapper:fullscreen {
+    width: 100vw;
+    height: 100vh;
+    overflow: auto; /* allow scrolling if content is tall */
+    position: relative;
+  }
+
+/* Custom YouTube fullscreen button */
+#customFullscreenBtn {
+    opacity: 0.9;
+  }
+
+  #customFullscreenBtn:hover {
+    opacity: 1;
+  }
+  
+
+/* === Fake Fullscreen Styling === */
+.fake-page-fullscreen {
+    position: relative !important;
+  }
+  
+  /* Hide masthead */
+  .fake-page-fullscreen #masthead-container {
+    display: none !important;
+  }
+  
+  /* Remove top spacing from main containers */
+  .fake-page-fullscreen #page-manager,
+  .fake-page-fullscreen ytd-watch-flexy[is-watch-page],
+  .fake-page-fullscreen #columns {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  
+  /* Stretch video to fill entire viewport */
+  .fake-page-fullscreen #movie_player {
+    position: relative !important;
+    width: 100% !important;
+    height: 100vh !important; /* full viewport */
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 9999 !important;
+    background: black !important;
+  }
+  
+  /* Push page content (creator + comments) slightly below video */
+  .fake-page-fullscreen #columns {
+    padding-top: 175px !important; /* small gap to see creator page */
+  }
+  
+  /* Ensure comments and secondary content follow naturally */
+  .fake-page-fullscreen #comments,
+  .fake-page-fullscreen #secondary {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  
+  /* Hide sidebar and footer */
+  .fake-page-fullscreen #guide,
+  .fake-page-fullscreen #footer {
+    display: none !important;
+  }
+
+  
