@@ -127,16 +127,11 @@ function createCustomButton() {
 
   customBtn.onclick = toggleWrapperFullscreen;
 
-  const theaterBtn = controlsRight.querySelector('.ytp-size-button');
-  if (theaterBtn) {
-      theaterBtn.insertAdjacentElement('afterend', customBtn);
+  const fullscreenBtn = controlsRight.querySelector('.ytp-fullscreen-button');
+  if (fullscreenBtn) {
+    fullscreenBtn.insertAdjacentElement('beforebegin', customBtn);
   } else {
-      const fullscreenBtn = controlsRight.querySelector('.ytp-fullscreen-button');
-      if (fullscreenBtn) {
-          controlsRight.insertBefore(customBtn, fullscreenBtn);
-      } else {
-          controlsRight.appendChild(customBtn);
-      }
+    controlsRight.appendChild(customBtn);
   }
 
   // Hide original YouTube fullscreen button ONLY if extension is enabled
